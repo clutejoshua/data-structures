@@ -9,7 +9,13 @@ var LinkedList = function() {
   list.removeHead = function() {
   };
 
+  // O(n) time | O(1) space
   list.contains = function(target) {
+    let node = this.head;
+    while (node !== null && node.value !== value) {
+      node = node.next;
+    }
+    return node !== null;
   };
 
   return list;
