@@ -1,6 +1,31 @@
+// new Stack;
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  storage = {
+    key: 1
+  };
+
+
 };
 
+
+// var stackMethods = {
+
+//   Stack.prototype.push = function(value) {
+
+//   },
+
+//   Stack.prototype.pop = function() {
+
+//   },
+
+//   Stack.prototype.size = function {
+
+
+//   }
+
+
+
+// };
+
+new Stack('a')
 
