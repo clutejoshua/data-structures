@@ -1,31 +1,26 @@
-// new Stack;
 var Stack = function() {
-  storage = {
-    key: 1
-  };
-
-
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  this.storage = {};
+  this.key = 1;
 };
 
+Stack.prototype.push = function(value) {
+  this.storage[this.key] = value;
+  this.key++;
+};
 
-// var stackMethods = {
+Stack.prototype.pop = function() {
+  var popped = this.storage[this.key - 1];
+  delete this.storage[this.key - 1];
+  this.key--;
+  return popped;
+};
 
-//   Stack.prototype.push = function(value) {
-
-//   },
-
-//   Stack.prototype.pop = function() {
-
-//   },
-
-//   Stack.prototype.size = function {
-
-
-//   }
-
-
-
-// };
-
-new Stack('a')
+Stack.prototype.size = function () {
+  if (this.key <= 0) {
+    return 0;
+  }
+  return this.key - 1;
+};
 
