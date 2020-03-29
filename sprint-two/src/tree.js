@@ -1,37 +1,42 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-
+  extend(newTree, treeMethods);
   newTree.children = [];
-  _.extend(newTree, treeMethods);
+
   return newTree;
+};
+
+var extend = function(ob1, ob2) {
+  for (var key in ob2) {
+    ob1[key] = ob2[key];
+  }
 };
 
 var treeMethods = {};
 
-// O(1) time | O(n) space
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
 
-// O(n) time | O(n) space (callstack)
 treeMethods.contains = function(target) {
-  if (this.value === target) {
-    return true;
-  }
+  let result = false;
 
-  if (this.children.length) {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].contains(target)) {
-        return true;
+  let doesContain = function(inner) {
+    if (inner.children.length > 0) {
+      for (var i = 0; i < inner.children.length; i++) {   //for in loop / for of loop  - es6 classes
+        if (inner.children[i].value === target) {
+          result = true;
+        } else {
+          doesContain(inner.children[i]);
+        }
       }
     }
-  }
+  };
+  doesContain(this);
+  return result;
 
-  return false;
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
